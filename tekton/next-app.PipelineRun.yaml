@@ -1,0 +1,24 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: next-js-app-run-
+spec:
+  serviceAccountName: build-bot
+  pipelineRef:
+    name: mohamed-keerthana-next-js-app-deploy
+  params:
+    - name: app-name
+      value: express-app
+    - name: source-repo
+      value: https://github.com/cloud-native-garage-method-cohort/mohamed-keerthana-next-js-app
+    - name: source-image
+      value: quay.io/mohameddounnani94/next-js-app
+  workspaces:
+    - name: pipeline-shared-data
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 1Gi
+          accessModes:
+            - ReadWriteOnce
