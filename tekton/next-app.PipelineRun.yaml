@@ -13,8 +13,18 @@ spec:
       value: https://github.com/cloud-native-garage-method-cohort/mohamed-keerthana-next-js-app
     - name: source-image
       value: quay.io/mohameddounnani94/next-js-app
+    - name: sha
+      value: 646d4f680715befc7a227a65072cbee3cf344ef3
   workspaces:
     - name: pipeline-shared-data
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 1Gi
+          accessModes:
+            - ReadWriteOnce
+    - name: production-repository
       volumeClaimTemplate:
         spec:
           resources:
