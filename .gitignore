@@ -1,2 +1,4 @@
 node_modules
-.next
+.next/
+tekton/base/quay-io-credentials.yaml
+tekton/base/git-credentials.Secret.yaml

@@ -31,6 +31,7 @@ spec:
           workspace: pipeline-shared-data
       taskRef:
         name: git-clone
+        kind: ClusterTask
     - name: run-tests
       taskRef:
         name: npm
@@ -87,22 +88,5 @@ spec:
       workspaces:
         - name: source
           workspace: pipeline-shared-data
-    - name: save-configuration
-      params:
-        - name: manifest
-          value: "$(tasks.create-configuration.results.manifest)"
-        - name: app-name
-          value: "$(params.app-name)"
-        - name: sha
-          value: "$(tasks.clone-repository.results.commit)"
-      runAfter:
-        - deploy
-      taskRef:
-        name: save-configuration
-      workspaces:
-        - name: source
-          workspace: pipeline-shared-data
-        - name: target
-          workspace: production-repository
 
   
