@@ -38,7 +38,7 @@ export default function Home() {
     </form>
       <ul>
       {tasks.map((task) => (
-            <li>{task.body}</li>
+            <li key={task.body}>{task.body}</li>
   ))}
     </ul>
       </main>
